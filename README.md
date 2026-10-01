@@ -4,8 +4,6 @@ An academic liability-driven investing project exploring Treasury and Aaa/Baa cr
 
 **Bloomberg · Excel · Python · Fixed Income · Liability-Driven Investing**
 
-> **Review status:** The original report figures are presented below as submitted. Both Aaa and Baa are investment grade; the figures' “HY” and “High Yield” labels refer to Baa and are incorrect. Workbook calculations and reported performance remain under reconciliation. See [review findings](docs/deliverable-review.txt).
-
 ![Original report comparison of static and dynamic portfolio funding ratios; HY denotes the incorrectly labeled Baa portfolio](screenshots/funding-ratio-comparison.png)
 
 *Figure 13, report page 13. The original chart compares portfolio value divided by liability present value across four strategies. It is an illustration from the submitted report, not an independently reproduced backtest.*
