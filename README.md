@@ -4,6 +4,10 @@ An academic liability-driven investing project examining how Treasury and Aaa/Ba
 
 **Bloomberg · Excel · Python · Fixed Income · Liability-Driven Investing**
 
+![Portfolio funding-ratio comparison](screenshots/funding-ratio-comparison.png)
+
+*Figure 13 · Comparison of portfolio funding ratios across static and semiannual rebalancing strategies, as presented in the project report.*
+
 [Read the report](reports/final-project-original.pdf) · [Download the Excel model](models/portfolio-model-original.xlsx) · [View the Python notebook](notebooks/bloomberg-data-retrieval-original.ipynb) · [Explore the Bloomberg data](data/bloomberg-index-data-2018-2025-original.xlsx)
 
 ---
@@ -43,9 +47,31 @@ As the payment date approaches, the liability's remaining horizon declines. This
 
 The static approach provides a reference for examining how a portfolio's interest-rate exposure evolves when initial holdings are maintained. The analysis considers duration drift and the relationship between portfolio value and the liability's present value over time.
 
+![Aaa portfolio static duration gap](screenshots/static-aaa-duration-gap.png)
+
+*Figure 1 · Aaa portfolio duration gap under static holdings.*
+
+![Baa portfolio static duration gap](screenshots/static-baa-duration-gap.png)
+
+*Figure 2 · Baa portfolio duration gap under static holdings.*
+
 ### Semiannual Rebalancing
 
 The rebalancing approach explores periodic allocation adjustments as the liability horizon shortens. It provides a framework for assessing how ongoing portfolio management can address changes in duration exposure and funding needs.
+
+![Aaa portfolio duration gap under semiannual rebalancing](screenshots/dynamic-aaa-duration-gap.png)
+
+*Figure 7 · Aaa portfolio duration gap under semiannual rebalancing.*
+
+![Baa portfolio duration gap under semiannual rebalancing](screenshots/dynamic-baa-duration-gap.png)
+
+*Figure 8 · Baa portfolio duration gap under semiannual rebalancing.*
+
+### Portfolio Value and Liability Tracking
+
+![Aaa portfolio value and liability present value under semiannual rebalancing](screenshots/dynamic-aaa-liability-tracking.png)
+
+*Figure 12 · Comparison of Aaa portfolio value and liability present value under semiannual rebalancing.*
 
 ### Aaa and Baa Credit Allocations
 
@@ -60,6 +86,54 @@ The project examines two credit-index allocations alongside Treasury exposure. T
 | Portfolio value and liability present value | Track assets relative to the discounted payment obligation |
 | Surplus or shortfall | Examine the difference between portfolio value and liability present value |
 | Funding ratio | Express portfolio value relative to liability present value |
+
+### Additional Portfolio Figures
+
+The following figures present the remaining portfolio comparisons from the team report.
+
+<details>
+<summary>Static portfolio surplus and liability tracking — Figures 3–6</summary>
+
+#### Figure 3 · Aaa Static Surplus / Shortfall
+
+![Aaa static portfolio surplus and shortfall](screenshots/static-aaa-surplus.png)
+
+#### Figure 4 · Baa Static Surplus / Shortfall
+
+![Baa static portfolio surplus and shortfall](screenshots/static-baa-surplus.png)
+
+#### Figure 5 · Baa Static Liability Tracking
+
+![Baa static portfolio value and liability present value](screenshots/static-baa-liability-tracking.png)
+
+#### Figure 6 · Aaa Static Liability Tracking
+
+![Aaa static portfolio value and liability present value](screenshots/static-aaa-liability-tracking.png)
+
+</details>
+
+<details>
+<summary>Semiannual rebalancing: surplus, liability tracking, and funding summary</summary>
+
+#### Figure 9 · Aaa Surplus / Shortfall
+
+![Aaa portfolio surplus and shortfall under semiannual rebalancing](screenshots/dynamic-aaa-surplus.png)
+
+#### Figure 10 · Baa Surplus / Shortfall
+
+![Baa portfolio surplus and shortfall under semiannual rebalancing](screenshots/dynamic-baa-surplus.png)
+
+#### Figure 11 · Baa Liability Tracking
+
+![Baa portfolio value and liability present value under semiannual rebalancing](screenshots/dynamic-baa-liability-tracking.png)
+
+#### Funding-Ratio Summary
+
+![Funding-ratio summary from the project report](screenshots/funding-ratio-summary.png)
+
+*Terminal funding-ratio comparison presented in the team report.*
+
+</details>
 
 ## Technical Implementation
 
