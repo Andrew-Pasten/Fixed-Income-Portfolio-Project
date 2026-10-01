@@ -1,0 +1,114 @@
+[
+  {
+    "file": "screenshots/static-aaa-duration-gap.png",
+    "pdf_page": 6,
+    "pdf_image": "Image30.png",
+    "width": 1143,
+    "height": 679,
+    "sha256": "b12f22505765243ef77d3a658cd7ba9ebad0443c786ef7b8e64850d1fa1d8402"
+  },
+  {
+    "file": "screenshots/static-baa-duration-gap.png",
+    "pdf_page": 7,
+    "pdf_image": "Image33.png",
+    "width": 1030,
+    "height": 614,
+    "sha256": "09663998dfdcb40e689ab55a5642bf6c6fdeec06e50c1d99a6ab7012630138f2"
+  },
+  {
+    "file": "screenshots/static-aaa-surplus.png",
+    "pdf_page": 7,
+    "pdf_image": "Image34.png",
+    "width": 1091,
+    "height": 647,
+    "sha256": "99f174134fe86de248a5867fd203533e9891ac4c3321d81de696105a40d1729d"
+  },
+  {
+    "file": "screenshots/static-baa-surplus.png",
+    "pdf_page": 8,
+    "pdf_image": "Image37.png",
+    "width": 1118,
+    "height": 670,
+    "sha256": "eae1cd65fdc7b888e691f13fbaf46246717ded4f1700a4c8992deb5d635349da"
+  },
+  {
+    "file": "screenshots/static-baa-liability-tracking.png",
+    "pdf_page": 8,
+    "pdf_image": "Image38.png",
+    "width": 1091,
+    "height": 640,
+    "sha256": "dd0907ea528a07846f365799a33115d4de5002e23e1cba0415eb0518ce8b6676"
+  },
+  {
+    "file": "screenshots/static-aaa-liability-tracking.png",
+    "pdf_page": 9,
+    "pdf_image": "Image41.png",
+    "width": 1134,
+    "height": 669,
+    "sha256": "a595fb856c8880199ad4752159a4440f5391f4551ecc22e752ae54dc7ef43344"
+  },
+  {
+    "file": "screenshots/dynamic-aaa-duration-gap.png",
+    "pdf_page": 10,
+    "pdf_image": "Image44.png",
+    "width": 1032,
+    "height": 613,
+    "sha256": "89e05eda87b496d555d4db3a0988f556f8908184f891a18a3223405347f33376"
+  },
+  {
+    "file": "screenshots/dynamic-baa-duration-gap.png",
+    "pdf_page": 10,
+    "pdf_image": "Image45.png",
+    "width": 998,
+    "height": 591,
+    "sha256": "996160505cb7e60c5349875de96510eed9049320802a4d7db3dc73b6d8f1b284"
+  },
+  {
+    "file": "screenshots/dynamic-aaa-surplus.png",
+    "pdf_page": 11,
+    "pdf_image": "Image48.png",
+    "width": 1021,
+    "height": 607,
+    "sha256": "9ee842ffff1da56e4467c821a97af008ddbe5dea32bc782d8377221cdd278f82"
+  },
+  {
+    "file": "screenshots/dynamic-baa-surplus.png",
+    "pdf_page": 11,
+    "pdf_image": "Image49.png",
+    "width": 1023,
+    "height": 611,
+    "sha256": "2e8e7233250b7108edc53a22026a46f7d6c5759326bc5a17a0189f080b314e28"
+  },
+  {
+    "file": "screenshots/dynamic-baa-liability-tracking.png",
+    "pdf_page": 12,
+    "pdf_image": "Image52.png",
+    "width": 1000,
+    "height": 598,
+    "sha256": "f93b370c5c836d380417bc99b88ea02238c26dc097b42325aa4a83a38549c615"
+  },
+  {
+    "file": "screenshots/dynamic-aaa-liability-tracking.png",
+    "pdf_page": 12,
+    "pdf_image": "Image53.png",
+    "width": 993,
+    "height": 590,
+    "sha256": "c97ba7fc3b35003bd1bebff572a3ef8bd19e05f0c138b4580b39e51ba9867f91"
+  },
+  {
+    "file": "screenshots/funding-ratio-comparison.png",
+    "pdf_page": 13,
+    "pdf_image": "Image56.png",
+    "width": 1656,
+    "height": 803,
+    "sha256": "a94faeac444e28b6b28b7d79972566e9c5ec77cbb91759c7d5e856a454847693"
+  },
+  {
+    "file": "screenshots/funding-ratio-summary.png",
+    "pdf_page": 13,
+    "pdf_image": "Image57.png",
+    "width": 383,
+    "height": 199,
+    "sha256": "76eb947bf73d8b76767bb1bae197c0c2b6c83bc23647aba52ee8ee0de14b2b2a"
+  }
+]

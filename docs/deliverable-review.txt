@@ -1,0 +1,160 @@
+FIXED INCOME PROJECT — PRE-PUBLICATION REVIEW
+Prepared September 30, 2026
+
+STATUS
+This is a local GitHub repository review package. The supplied Disney repository
+ZIP was used as a README presentation reference. No remote changes or publishing
+occurred. The original portfolio website has not been modified.
+
+The four original deliverables are included unchanged. Thirteen report charts and
+one summary image were extracted without altering the embedded image bytes. The
+README corrects terminology in its prose and explains the unreconciled results.
+
+Workbook analysis inspected formulas, stored inputs, and cached results, with
+independent arithmetic. It did not execute Excel, Solver, Bloomberg calls, or the
+report's backtest. Proposed workbook corrections have not been applied.
+
+1. CREDIT CLASSIFICATION — CONFIRMED
+Report pages 2–5 and chart labels use High Yield / Baa. The model's Base Instruments
+A10 labels I02788US Index as High Yield, while E11 names Bloomberg US Long Credit
+Baa. The data workbook's Static_Data confirms the corresponding Baa name.
+Use Aaa long credit and Baa long credit, both investment grade. Baa is not a
+high-yield classification. Higher yield relative to Aaa is a different claim.
+Reference: https://www.moodys.com/web/en/us/solutions/ratings.html
+The report also describes Bank of America credit indexes on page 2 while its
+table and supplied security names identify Bloomberg long credit indexes.
+Use the supplied security names and identifiers consistently.
+
+2. ALLOCATIONS AND DURATION — CONFIRMED
+Sheet name includes trailing space: 'Part 2 Rebalance '.
+D5 = 0.32 and E5 = 0.69: weights sum to 1.01 (101%). F5 is blank.
+The corresponding duplication appears in 'Port Test' I24:J24.
+G5 reports 6.48851028 from those weights, so closeness to a 6.5-year target
+does not establish a valid fully invested portfolio.
+
+In 'Part 2 Rebalance ', G8 and G14:G17 add the cash weight directly to duration.
+This implicitly gives cash a duration of one year. O14:O18 on the Baa side omit
+cash from duration, implicitly giving it zero duration. G18 is blank at maturity.
+'Port Test' repeats the Aaa issue in L27 and L33:L36, with L37 blank.
+Example: G16 = 1 when the portfolio is 100% cash; under zero-duration cash, it is 0.
+At row 15, existing weights imply 0.4 * 2.280858 = 0.9123432 years under that
+assumption, rather than the cached 1.5123432. Removing the added cash weight alone
+does not restore the 1.5-year target; weights must also be solved again.
+
+PROPOSED RECONCILIATION, NOT APPLIED
+Assume long-only portfolios, no leverage, and zero-duration cash. Let Dc be credit
+duration, Dt short Treasury duration, and H the nonnegative liability horizon.
+When Dt <= H <= Dc:
+  Credit weight = (H-Dt)/(Dc-Dt)
+  Treasury weight = 1-Credit weight
+  Cash weight = 0
+When 0 <= H < Dt:
+  Credit weight = 0
+  Treasury weight = H/Dt
+  Cash weight = 1-Treasury weight
+Portfolio duration = Credit weight*Dc + Treasury weight*Dt + Cash weight*0.
+If H exceeds Dc or input durations are missing/nonpositive, flag infeasibility
+instead of silently clipping weights. This specifies one feasible allocation
+policy, not a uniquely optimal three-asset portfolio.
+
+Using row 4's supplied durations and H=7 gives Aaa credit 36.95065466% and Baa
+credit 44.11464570%; complements go to short Treasuries. Both sum to 100% and
+match seven years within floating-point precision. Original rounded allocations
+produce 7.00628981 and 6.9877598 years respectively.
+If the intended cash instrument has nonzero duration, specify it and use the same
+explicit convention for both portfolios before applying the reconciliation.
+
+3. COUPON UNITS — CONFIRMED, BUT MODEL CHOICE MATTERS
+'Part 1 Immunization' B10 stores 0.0398 (3.98%). B23 is
+  =$B$16*($B$10%)/2
+The extra % divides by 100 again. With B16=$37 million, the cached payment is
+$7,363. For a hypothetical bond whose annual coupon rate is 3.98% on that
+notional, =$B$16*$B$10/2 yields $736,300 per half-year.
+The same extra conversion affects C23:C27, B23:B36, J23:J36, K23:K27 and the
+corresponding coupon formulas in 'Port Test'. Principal additions need to remain
+separate when correcting coupon terms.
+
+Do not simply add those corrected coupons to index-based performance. These are
+total-return index series; a backtest using changes in total-return index levels
+must not add the same coupon return again. Choose one coherent approach:
+  a) index-level return simulation using index units and observed durations; or
+  b) an explicitly hypothetical bond cash-flow model with consistent coupon,
+     price, maturity, yield, and reinvestment conventions.
+The source mixes index levels with individual-bond par and maturity assumptions.
+Its index price divided into $1,000 bond counts is not an established replication
+of the index. Rolling bond indexes do not mature like individual bonds.
+
+4. INITIAL FUNDING — REQUIRES MODEL RECONCILIATION
+'Part 1 Immunization' B16:C16 and J16:K16 allocate the full $100 million future
+liability (G4), rather than its present value. At the workbook's nominal annual
+2.5% rate with semiannual compounding over seven years, the illustrative PV is
+100,000,000/(1+0.025/2)^14 = $84,036,809.06.
+That compounding convention follows the workbook's cash-flow formulas; it is not
+a verified historical liability discount curve. Define the liability discount
+method explicitly, then distinguish initial capital, liability PV, and surplus.
+The report's claim of initial PV matching is not demonstrated by these positions.
+
+5. REPORT / WORKBOOK RESULTS DO NOT CURRENTLY TIE
+PDF page 13, Figure 13 visibly lists final funding ratios of 0.851 (IG Static),
+0.935 (HY Static), and 0.986 for each dynamic portfolio.
+'Part 1 Immunization' E37 and M37 cache future values of $107,601,138.42 and
+$106,825,606.33. Relative to $100 million, those imply 1.076011 and 1.068256,
+not the PDF's static ratios. The series and calculation basis need tracing.
+'CF rebalance test' contains hardcoded schedules and results; these are not a
+substitute for an independently reproducible dynamic simulation.
+Do not publish the PDF ratios as validated headline metrics. Rebuild the result
+series and charts only after the methodology above is consistent.
+
+6. OTHER MODEL QUALITY ISSUES
+'Bond Port 1 ' and 'Bond Port Semi' B18:C18/N18:O18 subtract squared duration error
+from squared price error. Minimizing that objective can reward larger duration
+error. If retaining a calibration model, define properly scaled nonnegative
+errors and constraints; do not equate index levels with bond prices.
+Those draft sheets also mix coupon units and maturity assumptions. They should
+not be featured as validated model outputs.
+The historical worksheet inputs and the end-2025 base instrument snapshot must
+not be interchanged when constructing the end-2018 portfolio.
+
+7. NOTEBOOK SCOPE AND REPRODUCIBILITY
+The supplied notebook has 12 code cells. It connects to Bloomberg, requests static
+security information, retrieves PX_LAST, calculates percentage changes, pivots
+tables, and exports an Excel file. There is no portfolio allocation loop,
+liability valuation, rebalancing engine, funding-ratio calculation, or chart code.
+It was read as source and not executed; the package-installation cells are not
+instructions to install anything for this review.
+
+The supplied data workbook contains LAST_PRICE, MACAULAY_DURATION, and INDEX_COUPON
+in Historical_Long; it also contains Price_Wide, Duration_Wide, Coupon_Wide, and
+Replicated_Test_Format. The notebook requests only PX_LAST and writes a different
+set of sheets, including Index_Levels_Wide. It cannot reproduce the supplied data
+workbook exactly as written. The observed price-date range is 2018-12-31 through
+2025-12-31. Recover the producing notebook/version before claiming end-to-end
+reproducibility or adding a complete backtest label.
+
+8. PORTFOLIO PRESENTATION
+Suggested project-card copy:
+  Fixed Income Portfolio Construction & Immunization
+  An academic study of Treasury and Aaa/Baa credit allocations for a $100 million
+  liability, comparing static holdings with semiannual duration rebalancing.
+  Bloomberg / Excel / Python / Fixed Income
+
+Use the existing site's project template, spacing, typography, buttons, navigation,
+and mobile behavior when its source is available. Include a project card linking
+to the detail page. Keep relative asset links compatible with the repository's
+deployment base path. Avoid headline performance claims pending reconciliation.
+Preserve team attribution. Andrew's individual contribution is not specified by
+the supplied materials, so do not claim sole authorship or invent responsibilities.
+
+REMAINING INPUT
+The report's portfolio backtest and chart-generation notebook is needed to
+reproduce and reconcile the result series. An optional description of Andrew's
+individual role would make the portfolio narrative more precise.
+The portfolio repository source is only needed for subsequently adding the link
+to the actual website, rather than for preparing this standalone GitHub README.
+
+REVIEW BEFORE PUBLISHING
+1. Review the GitHub README, figure captions, and downloadable materials.
+2. Choose and implement the consistent index or hypothetical bond methodology.
+3. Recalculate the model and reproduce the report outputs, then revise the PDF.
+4. Replace the original-file review labels with the verified versions as applicable.
+5. Obtain the user's publishing decision only after those changes are reviewable.
